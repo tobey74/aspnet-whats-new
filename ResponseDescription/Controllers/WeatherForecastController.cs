@@ -19,6 +19,8 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
+    [ProducesResponseType<IEnumerable<WeatherForecast>>(StatusCodes.Status200OK, Description = "The weather forecast for the next 5 days.")]
+
     public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
