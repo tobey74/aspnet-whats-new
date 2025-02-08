@@ -1,8 +1,44 @@
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options =>
+{
+    // Specify the OpenAPI version to use.
+    // options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0;
+    // Here's how to add an example in .NET 9
+    // options.AddSchemaTransformer((schema, context, cancellationToken) =>
+    // {
+    //     if (context.JsonTypeInfo.Type == typeof(WeatherForecast))
+    //     {
+    //         schema.Example = new OpenApiObject
+    //         {
+    //             ["date"] = new OpenApiString(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")),
+    //             ["temperatureC"] = new OpenApiInteger(0),
+    //             ["temperatureF"] = new OpenApiInteger(32),
+    //             ["summary"] = new OpenApiString("Bracing"),
+    //         };
+    //     }
+    //     return Task.CompletedTask;
+    // });
+    options.AddSchemaTransformer((schema, context, cancellationToken) =>
+    {
+        if (context.JsonTypeInfo.Type == typeof(WeatherForecast))
+        {
+            schema.Example = new JsonObject
+            {
+                ["date"] = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
+                ["temperatureC"] = 0,
+                ["temperatureF"] = 32,
+                ["summary"] = "Bracing",
+            };
+        }
+        return Task.CompletedTask;
+    });
+});
 
 var app = builder.Build();
 
