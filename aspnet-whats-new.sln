@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponseDescription", "Resp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAPI-3.1", "OpenAPI-3.1\OpenAPI-3.1.csproj", "{D4260F54-7CD9-46B6-B133-7F819F116EF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAPI-in-YAML", "OpenAPI-in-YAML\OpenAPI-in-YAML.csproj", "{E0161780-0824-455B-AD63-2C7202C7F140}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{D4260F54-7CD9-46B6-B133-7F819F116EF0}.Release|x64.Build.0 = Release|Any CPU
 		{D4260F54-7CD9-46B6-B133-7F819F116EF0}.Release|x86.ActiveCfg = Release|Any CPU
 		{D4260F54-7CD9-46B6-B133-7F819F116EF0}.Release|x86.Build.0 = Release|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Debug|x64.Build.0 = Debug|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Debug|x86.Build.0 = Debug|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Release|x64.ActiveCfg = Release|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Release|x64.Build.0 = Release|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Release|x86.ActiveCfg = Release|Any CPU
+		{E0161780-0824-455B-AD63-2C7202C7F140}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

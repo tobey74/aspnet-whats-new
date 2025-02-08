@@ -1,0 +1,6 @@
+@OpenAPI_in_YAML_HostAddress = http://localhost:5007
+
+GET {{OpenAPI_in_YAML_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
