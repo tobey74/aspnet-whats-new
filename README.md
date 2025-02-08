@@ -85,6 +85,24 @@ Note that these changes will be necessary even if you congfigure the OpenAPI ver
 
 <!-- We've eliminated the schema store and you can now create new schemas directly in the document. -->
 
+## OpenAPI in Yaml
+
+https://github.com/dotnet/aspnetcore/pull/58616
+
+ASP.NET now supports serving the generated OpenAPI document in YAML format.
+YAML can be more concise than JSON, eliminating curly braces and quotation marks when these can be inferred.
+YAML also supports multi-line strings, which can be useful for long descriptions.
+
+To configure your application to serve the generated OpenAPI document in YAML format,
+specify the endpoint in the MapOpenApi call with a ".yaml" suffix, as shown in this example:
+
+```csharp
+app.MapOpenApi("/openapi/{documentName}.yaml");
+```
+
+Support for YAML is currently only available for the the OpenAPI served from the OpenAPI endpoint.
+Support for generating OpenAPI documents in YAML format at build time will be added in a future preview.
+
 ## Response description on ProducesResponseType
 
 https://github.com/dotnet/aspnetcore/pull/58193
