@@ -94,7 +94,7 @@ YAML can be more concise than JSON, eliminating curly braces and quotation marks
 YAML also supports multi-line strings, which can be useful for long descriptions.
 
 To configure your application to serve the generated OpenAPI document in YAML format,
-specify the endpoint in the MapOpenApi call with a ".yaml" suffix, as shown in this example:
+specify the endpoint in the MapOpenApi call with a ".yaml" or ".yml" suffix, as shown in this example:
 
 ```csharp
 app.MapOpenApi("/openapi/{documentName}.yaml");
