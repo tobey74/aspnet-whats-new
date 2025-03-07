@@ -2,6 +2,8 @@
 
 What's new in ASP.NET for .NET 10 preview 2.
 
+<!-- https://github.com/dotnet/aspnetcore.docs/issues/34729 -->
+
 ## Overview
 
 Here's a list of the new features and improvements in ASP.NET for .NET 10 preview 2.
@@ -31,37 +33,33 @@ Note that the C# build process does not capture XML doc comments placed on lamda
 app.MapGet("/hello", (string name) =>$"Hello, {name}!");
 ```
 
-You would change the endpoint to be defined as a method:
+change the `MapGet` call to reference a method
 
 ```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddOpenApi();
-
-if (app.Environment.IsDeelopment())
-{
-  app.MapOpenApi();
-}
-
 app.MapGet("/hello", Hello);
+```
 
-app.Run();
+Then define the `Hello` method with XML doc comments:
 
-// Define the endpoint handler as a method.
-
-/// <summary>
-/// Sends a greeting.
-/// </summary>
-/// <remarks>
-/// Greeting a person by their name.
-/// </remarks>
-/// <param name="name">The name of the person to greet.</param>
-/// <returns>A greeting.</returns>
-public static string Hello(string name)
+```csharp
+static partial class Program
 {
-    return $"Hello, {name}!";
+    /// <summary>
+    /// Sends a greeting.
+    /// </summary>
+    /// <remarks>
+    /// Greeting a person by their name.
+    /// </remarks>
+    /// <param name="name">The name of the person to greet.</param>
+    /// <returns>A greeting.</returns>
+    public static string Hello(string name)
+    {
+        return $"Hello, {name}!";
+    }
 }
 ```
+
+Here the `Hello` method is added to the `Program` class, but you can add it to any class in your project.
 
 The example above illustrates the `<summary>`, `<remarks>`, and `<param>` XML doc comments.
 For more information about XML doc comments, including all the supported tags, see the [C# documentation](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags).
