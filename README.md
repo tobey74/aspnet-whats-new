@@ -54,8 +54,8 @@ app.MapGet("/hello", Hello);
 
 ```
 
-The example above illustrates the <summary>, <remarks>, and <param> XML doc comments.
-For more information about XML doc comments, see the [C# documentation](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags).
+The example above illustrates the `<summary>`, `<remarks>`, and `<param>` XML doc comments.
+For more information about XML doc comments, including all the supported tags, see the [C# documentation](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags).
 
 ## Upgrade to OpenAPI.NET v2.0.0-preview7
 
