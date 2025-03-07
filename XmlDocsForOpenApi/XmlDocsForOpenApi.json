@@ -8,12 +8,15 @@
     "/hello": {
       "get": {
         "tags": [
-          "XmlDocsForOpenApi"
+          "Program"
         ],
+        "summary": "Sends a greeting.",
+        "description": "Greeting a person by their name.",
         "parameters": [
           {
             "name": "name",
             "in": "query",
+            "description": "The name of the person to greet.",
             "required": true,
             "schema": {
               "type": "string"
@@ -37,7 +40,7 @@
   },
   "tags": [
     {
-      "name": "XmlDocsForOpenApi"
+      "name": "Program"
     }
   ]
 }

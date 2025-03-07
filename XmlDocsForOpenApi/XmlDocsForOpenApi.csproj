@@ -10,6 +10,11 @@
     <OpenApiDocumentsDirectory>$(MSBuildProjectDirectory)</OpenApiDocumentsDirectory>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- Capture XML doc comments for inclusion in the generated OpenAPI document -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-preview.2.25126.5" />
     <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="10.0.0-preview.2.25126.5">
