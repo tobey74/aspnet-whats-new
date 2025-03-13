@@ -132,3 +132,7 @@ This PR adds metrics for certain authentication and authorization events in ASP.
   - Sign out count
 - Authorization:
   - Count of requests requiring authorization
+
+The following image shows an example of the Authenticated request duration metric in the Aspire dashboard:
+
+![Authenticated request duration in the Aspire dashboard](./AuthMetrics.jpg)
