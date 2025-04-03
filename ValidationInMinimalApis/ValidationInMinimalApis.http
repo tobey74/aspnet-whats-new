@@ -9,3 +9,15 @@ GET {{ValidationInMinimalApis_HostAddress}}/todos/1
 Accept: application/json
 
 ###
+
+PUT {{ValidationInMinimalApis_HostAddress}}/todos/42
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 42,
+  "title": "Updated Todo",
+  "description": ""
+}
+
+###
