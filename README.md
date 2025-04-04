@@ -57,10 +57,9 @@ is now supported in Minimal APIs. This allows you to set a description for the r
 Here's an example:
 
 ```csharp
-[HttpGet(Name = "GetWeatherForecast")]
-[ProducesResponseType<IEnumerable<WeatherForecast>>(StatusCodes.Status200OK, Description = "The weather forecast for the next 5 days.")]
-public IEnumerable<WeatherForecast> Get()
-{
+app.MapGet("/weatherforecast",
+    [ProducesResponseType<IEnumerable<WeatherForecast>>(StatusCodes.Status200OK, Description = "The service is healthy.")]
+    () =>
 ```
 
 And the generated OpenAPI will be
