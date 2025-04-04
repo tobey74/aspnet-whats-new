@@ -49,6 +49,13 @@ app.MapPost("/products",
 
 ## Support for SSE (Server-Sent Events) in Minimal APIs
 
+<!-- Sample repo and docs are available at https://github.com/captainsafia/minapi-sse. -->
+
+Minimal and controller-based API apps now support transmitting server-sent events from backend services using the TypedResults abstraction.
+
+The `TypedResults.ServerSentEvents` API allows you to easily send Server-Sent Events (SSE) from your minimal API endpoints.
+
+
 ## Setting Response Descriptions in Minimal API
 
 The `Description` parameter of the `ProducesAttribute`, `ProducesResponseTypeAttribute`, and `ProducesDefaultResponseAttribute`

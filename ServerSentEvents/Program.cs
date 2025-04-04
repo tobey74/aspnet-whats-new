@@ -1,3 +1,6 @@
+using System.Net.ServerSentEvents;
+using System.Runtime.CompilerServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,28 +17,76 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapGet("/string-item", (CancellationToken cancellationToken) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    async IAsyncEnumerable<string> GetHeartRate(
+        [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            var heartRate = Random.Shared.Next(60, 100);
+            yield return $"Heart Rate: {heartRate} bpm";
+            await Task.Delay(2000, cancellationToken);
+        }
+    }
 
-app.MapGet("/weatherforecast", () =>
+    return TypedResults.ServerSentEvents(GetHeartRate(cancellationToken), eventType: "heartRate");
+});
+
+app.MapGet("/int-item", (CancellationToken cancellationToken) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    async IAsyncEnumerable<int> GetHeartRate(
+        [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            var heartRate = Random.Shared.Next(60, 100);
+            yield return heartRate;
+            await Task.Delay(2000, cancellationToken);
+        }
+    }
+
+    return TypedResults.ServerSentEvents(GetHeartRate(cancellationToken), eventType: "heartRate");
+});
+
+app.MapGet("/json-item", (CancellationToken cancellationToken) =>
+{
+    async IAsyncEnumerable<HeartRateEvent> GetHeartRate(
+        [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            var heartRate = Random.Shared.Next(60, 100);
+            yield return HeartRateEvent.Create(heartRate);
+            await Task.Delay(2000, cancellationToken);
+        }
+    }
+
+    return TypedResults.ServerSentEvents(GetHeartRate(cancellationToken), eventType: "heartRate");
+});
+
+app.MapGet("sse-item", (CancellationToken cancellationToken) =>
+{
+    async IAsyncEnumerable<SseItem<int>> GetHeartRate(
+        [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            var heartRate = Random.Shared.Next(60, 100);
+            yield return new SseItem<int>(heartRate, eventType: "heartRate")
+            {
+                ReconnectionInterval = TimeSpan.FromMinutes(1)
+            };
+            await Task.Delay(2000, cancellationToken);
+        }
+    }
+
+    return TypedResults.ServerSentEvents(GetHeartRate(cancellationToken));
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+public record HeartRateEvent(DateTime Timestamp, int HeartRate)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    public static HeartRateEvent Create(int heartRate) => new(DateTime.UtcNow, heartRate);
 }

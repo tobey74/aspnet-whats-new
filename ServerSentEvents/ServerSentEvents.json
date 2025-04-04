@@ -5,22 +5,75 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/weatherforecast": {
+    "/string-item": {
       "get": {
         "tags": [
           "ServerSentEvents"
         ],
-        "operationId": "GetWeatherForecast",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
-              "application/json": {
+              "text/event-stream": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
+                  "$ref": "#/components/schemas/SseItemOfstring"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/int-item": {
+      "get": {
+        "tags": [
+          "ServerSentEvents"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/SseItemOfint"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/json-item": {
+      "get": {
+        "tags": [
+          "ServerSentEvents"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/SseItemOfHeartRateEvent"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sse-item": {
+      "get": {
+        "tags": [
+          "ServerSentEvents"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/SseItemOfint"
                 }
               }
             }
@@ -31,39 +84,116 @@
   },
   "components": {
     "schemas": {
-      "WeatherForecast": {
+      "HeartRateEvent": {
         "required": [
-          "date",
-          "temperatureC",
-          "summary"
+          "timestamp",
+          "heartRate"
         ],
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "properties": {
-          "date": {
+          "timestamp": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
-          "temperatureC": {
+          "heartRate": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
               "string"
             ],
             "format": "int32"
+          }
+        }
+      },
+      "SseItemOfHeartRateEvent": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/HeartRateEvent"
           },
-          "summary": {
+          "eventType": {
             "type": [
               "null",
               "string"
             ]
           },
-          "temperatureF": {
+          "eventId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "reconnectionInterval": {
+            "pattern": "^-?(\\d+\\.)?\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,7})?$",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "SseItemOfint": {
+        "type": "object",
+        "properties": {
+          "data": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
               "string"
             ],
             "format": "int32"
+          },
+          "eventType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "eventId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "reconnectionInterval": {
+            "pattern": "^-?(\\d+\\.)?\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,7})?$",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "SseItemOfstring": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "eventType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "eventId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "reconnectionInterval": {
+            "pattern": "^-?(\\d+\\.)?\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,7})?$",
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       }

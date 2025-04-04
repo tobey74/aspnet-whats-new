@@ -1,6 +1,4 @@
-@ServerSentEvents_HostAddress = http://localhost:5096
+@HostAddress = http://localhost:5096
 
-GET {{ServerSentEvents_HostAddress}}/weatherforecast/
+GET {{HostAddress}}/weatherforecast/
 Accept: application/json
-
-###
