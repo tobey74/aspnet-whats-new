@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponseDescription", "Resp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAot", "WebApiAot\WebApiAot.csproj", "{5E09AA49-206E-49EC-B94B-92475AC23CDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerSentEvents", "ServerSentEvents\ServerSentEvents.csproj", "{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{5E09AA49-206E-49EC-B94B-92475AC23CDB}.Release|x64.Build.0 = Release|Any CPU
 		{5E09AA49-206E-49EC-B94B-92475AC23CDB}.Release|x86.ActiveCfg = Release|Any CPU
 		{5E09AA49-206E-49EC-B94B-92475AC23CDB}.Release|x86.Build.0 = Release|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Debug|x64.Build.0 = Debug|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Debug|x86.Build.0 = Debug|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Release|x64.ActiveCfg = Release|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Release|x64.Build.0 = Release|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Release|x86.ActiveCfg = Release|Any CPU
+		{F97F51AB-EFC1-40DA-A363-D5DA35EBCCAB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
