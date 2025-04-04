@@ -1,8 +1,8 @@
-ARG VARIANT=1-8.0-bookworm
-FROM mcr.microsoft.com/devcontainers/dotnet:${VARIANT}
+# Use the most recent .NET LTS as the base image
+FROM mcr.microsoft.com/devcontainers/dotnet:1-8.0
 
-# Install .NET 10.0 nightly
-RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && sudo ./dotnet-install.sh --version 10.0.100-preview.1.25104.26 --install-dir /usr/share/dotnet \
-    && rm dotnet-install.sh
+# Install the current .NET STS release on top of that
+COPY --from=mcr.microsoft.com/dotnet/sdk:9.0 /usr/share/dotnet /usr/share/dotnet
+
+# Finally install the most recent .NET 10.0 preview using the dotnet-install script
+COPY --from=mcr.microsoft.com/dotnet/nightly/sdk:10.0.100-preview.1 /usr/share/dotnet /usr/share/dotnet
