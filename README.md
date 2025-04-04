@@ -46,3 +46,36 @@ app.MapPost("/products",
 ```
 
 <!-- Validation in Minimal APIs is designed to be AOT-friendly. The validation logic is generated at build time, which means that it can be used in AOT scenarios without any additional configuration. This makes it easy to use validation in your minimal APIs without worrying about runtime performance. -->
+
+## Support for SSE (Server-Sent Events) in Minimal APIs
+
+## Setting Response Descriptions in Minimal API
+
+The `Description` parameter of the `ProducesAttribute`, `ProducesResponseTypeAttribute`, and `ProducesDefaultResponseAttribute`
+is now supported in Minimal APIs. This allows you to set a description for the response type in the OpenAPI document.
+
+Here's an example:
+
+```csharp
+[HttpGet(Name = "GetWeatherForecast")]
+[ProducesResponseType<IEnumerable<WeatherForecast>>(StatusCodes.Status200OK, Description = "The weather forecast for the next 5 days.")]
+public IEnumerable<WeatherForecast> Get()
+{
+```
+
+And the generated OpenAPI will be
+
+```json
+        "responses": {
+          "200": {
+            "description": "The weather forecast for the next 5 days.",
+            "content": {
+```
+
+This was a community contribution by @sander1095. Thanks for this contribution!
+
+## Add Microsoft.AspNetCore.OpenApi to the webapiaot template
+
+Support for OpenAPI document generation with the Microsoft.AspNetCore.OpenApi packagte is now included by default in the webapiaot project template. This support can be disabled if desired by using the `--no-openapi` flag when creating a new project.
+
+This was a community contribution by @sander1095. Thanks for this contribution!
