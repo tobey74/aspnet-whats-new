@@ -47,14 +47,39 @@ app.MapPost("/products",
 
 <!-- Validation in Minimal APIs is designed to be AOT-friendly. The validation logic is generated at build time, which means that it can be used in AOT scenarios without any additional configuration. This makes it easy to use validation in your minimal APIs without worrying about runtime performance. -->
 
-## Support for SSE (Server-Sent Events) in Minimal APIs
+## Support for Server-Sent Events (SSE)
 
 <!-- Sample repo and docs are available at https://github.com/captainsafia/minapi-sse. -->
 
-Minimal and controller-based API apps now support transmitting server-sent events from backend services using the TypedResults abstraction.
+ASP.NET Core now supports returning a `ServerSentEvents` result using the `TypedResults.ServerSentEvents` API.
+This feature is supported in both Minimal APIs and controller-based apps.
 
-The `TypedResults.ServerSentEvents` API allows you to easily send Server-Sent Events (SSE) from your minimal API endpoints.
+Server-Sent Events (SSE) is a server push technology that allows a server to send a stream of event messages to a
+client over a single HTTP connection. In .NET the event messages are represented as [SseItem<T>](https://learn.microsoft.com/en-us/dotnet/api/system.net.serversentevents.sseitem-1) objects, which may contain an event type, an ID, and a data payload of type `T`.
 
+The `TypedResults` class has a new static method called `ServerSentEvents` that can be used to return a `ServerSentEvents` result. The first parameter to this method is an `IAsyncEnumerable<SseItem<T>>` that represents the stream of event messages to be sent to the client.
+
+The following example illustrates how to the  `TypedResults.ServerSentEvents` API to return a stream of heart rate events as JSON objects to the client:
+
+```csharp
+app.MapGet("/json-item", (CancellationToken cancellationToken) =>
+{
+    async IAsyncEnumerable<HeartRateEvent> GetHeartRate(
+        [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            var heartRate = Random.Shared.Next(60, 100);
+            yield return HeartRateEvent.Create(heartRate);
+            await Task.Delay(2000, cancellationToken);
+        }
+    }
+
+    return TypedResults.ServerSentEvents(GetHeartRate(cancellationToken), eventType: "heartRate");
+});
+```
+
+When OpenAPI document generation is enabled, endpoints that return a `ServerSentEvents` result will be documented with the `text/event-stream` content type.
 
 ## Setting Response Descriptions in Minimal API
 
