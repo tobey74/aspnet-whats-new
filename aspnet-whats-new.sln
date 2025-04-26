@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerSentEvents", "ServerS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SseInMvc", "SseInMvc\SseInMvc.csproj", "{030AC609-CB69-4845-B727-0979E02C8129}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDemo", "ConsoleDemo\ConsoleDemo.csproj", "{2B5C0CC8-858B-477D-8B10-909089A2784E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{030AC609-CB69-4845-B727-0979E02C8129}.Release|x64.Build.0 = Release|Any CPU
 		{030AC609-CB69-4845-B727-0979E02C8129}.Release|x86.ActiveCfg = Release|Any CPU
 		{030AC609-CB69-4845-B727-0979E02C8129}.Release|x86.Build.0 = Release|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Debug|x64.Build.0 = Debug|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Debug|x86.Build.0 = Debug|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Release|x64.ActiveCfg = Release|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Release|x64.Build.0 = Release|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B5C0CC8-858B-477D-8B10-909089A2784E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
