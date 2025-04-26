@@ -1,0 +1,8 @@
+@HostAddress = http://localhost:5096
+
+GET {{HostAddress}}/weatherforecast/
+Accept: application/json
+
+# Note: RestClient does not support streaming responses.
+# To see the streaming response, open a terminal and run the following command:
+# curl http://localhost:5096/sse-item

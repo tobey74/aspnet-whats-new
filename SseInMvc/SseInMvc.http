@@ -1,0 +1,6 @@
+@SseInMvc_HostAddress = http://localhost:5142
+
+GET {{SseInMvc_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
